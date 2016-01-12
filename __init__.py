@@ -34,16 +34,16 @@ def get_sub_events(task, sub, eliminate_events_with_no_eeg=True, rhino_prefix='/
     
     evs = evs.add_fields(esrc=np.dtype(RawBinWrapper))
 
-#    import pathlib
-#
-#    for ev in evs:
-#        try:
-#            eeg_file_path = join(rhino_prefix, str(pathlib.Path(str(ev.eegfile)).parts[1:]))
-#            ev.esrc = RawBinWrapper(eeg_file_path)
-#            #self.raw_data_root=str(eeg_file_path)
-#        except TypeError:
-#            print 'skipping event with eegfile=',ev.eegfile
-#            pass
+    import pathlib
+
+    for ev in evs:
+        try:
+            eeg_file_path = join(rhino_prefix, str(pathlib.Path(str(ev.eegfile)).parts[1:]))
+            ev.esrc = RawBinWrapper(eeg_file_path)
+            #self.raw_data_root=str(eeg_file_path)
+        except TypeError:
+            print 'skipping event with eegfile=',ev.eegfile
+            pass
     
     return(evs)    
     
